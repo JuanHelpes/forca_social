@@ -44,9 +44,6 @@ class PedState:
         self.ped_states.append(self._state.copy())
 
     def get_states(self):
-        #print(np.stack(self.group_states))
-        with open('example.txt', r'w') as arq:
-            arq.write(str(self.ped_states))
         return np.stack(self.ped_states), self.group_states
 
     def size(self) -> int:
