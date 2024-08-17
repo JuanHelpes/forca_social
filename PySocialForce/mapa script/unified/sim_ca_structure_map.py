@@ -1,5 +1,10 @@
 # -*- coding:utf-8 -*-
 
+from colour import Color
+from PIL import Image
+from PIL import ImageDraw
+from pathlib import Path
+
 from sim_ca_constants import Constants
 
 class StructureMap(object):
@@ -115,3 +120,37 @@ class StructureMap(object):
                     self.map[new_door['row']][new_door['col'] + i] = Constants.M_DOOR         
 
         self.exits = self.get_exits()
+
+
+    def draw_map(self, directory):
+        """Draw the static map using a range of colors from red to blue.
+
+        Parameters
+        ----------
+        directory : str
+            Contain the directory that the image will be saved
+        """
+        field_size = 20
+        image = Image.new("RGB", (field_size * self.len_col, field_size * self.len_row), Constants.C_WHITE)
+        draw = ImageDraw.Draw(image)
+
+        for i in range(self.len_row):
+            for j in range(self.len_col):
+                if (self.structure_map.map[i][j] == Constants.M_OBJECT):
+                    draw.rectangle((j * field_size, i * field_size, (j + 1) * field_size, (i + 1) * field_size), Constants.C_GRAY, Constants.C_GRAY)
+                elif (self.structure_map.map[i][j] == Constants.M_VOID):
+                    draw.rectangle((j * field_size, i * field_size, (j + 1) * field_size, (i + 1) * field_size), Constants.C_LIGHT_BLACK, Constants.C_LIGHT_BLACK)
+                elif (self.structure_map.map[i][j] == Constants.M_WALL or self.map[i][j] == Constants.S_WALL):
+                    draw.rectangle((j * field_size, i * field_size, (j + 1) * field_size, (i + 1) * field_size), Constants.C_BLACK, Constants.C_BLACK)
+                elif (self.structure_map.map[i][j] == Constants.M_DOOR):
+                    draw.rectangle((j * field_size, i * field_size, (j + 1) * field_size, (i + 1) * field_size), Constants.C_RED, Constants.C_BLACK)
+                elif (self.structure_map.map[i][j] == Constants.M_COMODO):
+                    draw.rectangle((j * field_size, i * field_size, (j + 1) * field_size, (i + 1) * field_size), Constants.C_GRAY, Constants.C_GRAY)
+                elif (self.structure_map.map[i][j] == Constants.M_SAIDACOMODO):
+                    draw.rectangle((j * field_size, i * field_size, (j + 1) * field_size, (i + 1) * field_size), Constants.C_RED, Constants.C_BLACK)
+                # Novas cores para as constantes novas
+                # Ajustar caminhos para salvar e buscar os mapas
+
+        Path(directory).mkdir(parents=True, exist_ok=True)
+        image_name = directory + "/" + self.label + "_mapa_comodo.png"
+        image.save(image_name)

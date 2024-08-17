@@ -9,6 +9,8 @@ class Constants(object):
     M_DOOR = 2
     M_OBJECT = 3
     M_VOID = 4
+    M_COMODO = 5
+    M_SAIDACOMODO = 9
     
     # Static Field Constant
     S_WALL = 9999

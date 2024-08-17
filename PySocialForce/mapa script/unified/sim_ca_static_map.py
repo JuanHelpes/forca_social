@@ -78,7 +78,7 @@ class StaticMap(object):
                     static_map_row.append(1)
                 elif (self.structure_map.map[i][j] == Constants.M_WALL or self.structure_map.map[i][j] == Constants.M_OBJECT or self.structure_map.map[i][j] == Constants.M_VOID): # If it is a WALL, OBJECT or VOID
                     static_map_row.append(Constants.S_WALL)
-                elif (self.structure_map.map[i][j] == Constants.M_EMPTY):
+                elif (self.structure_map.map[i][j] == Constants.M_EMPTY or self.structure_map.map[i][j] == Constants.M_COMODO): # If it is a EMPTY or COMODO
                     static_map_row.append(Constants.M_EMPTY)
             self.map.append(static_map_row)
 
