@@ -5,7 +5,7 @@ import numpy as np
 arquivo_mapa = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_3\cinema.txt"
 # caminho relativo do arquivo do mapa com alterações
 # arquivo_mapa_alterado = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_3\cinema_comodos.txt"
-arquivo_mapa_alterado = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_3\cinema_comodos copy.txt"
+arquivo_mapa_alterado = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_3\cinema_comodos.txt"
 # caminho relativo do arquivo do mapa estatico
 arquivo_mapa_static = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_3\static_mapa_cinema.txt"
 # caminho relativo do arquivo de passos

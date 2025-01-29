@@ -28,6 +28,6 @@ xticks = np.arange(0, 100, 5)
 # escala de Y
 yticks = np.arange(0, 100, 5)
 # numero de passos
-n_passos = 200
+n_passos = 900
 # caminho de salvamento do arquivo
 caminho = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_5"

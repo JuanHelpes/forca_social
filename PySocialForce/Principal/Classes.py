@@ -17,6 +17,7 @@ class Mapa:
         self.pos_portas_internas, self.dicionario_portas_internas_saida = self.posPortasInternas()
         self.pos_comodos = self.posComodos()
         self.portas_por_comodo = self.encontrar_portas_por_comodo()
+        self.pos_invalidas = self.posInvalidas()
 
     def carrega_mapa(self):
         with open(self.arquivo_mapa_padrao, 'r') as f:
@@ -56,8 +57,6 @@ class Mapa:
         coluna = 0
         lista_de_linhas_do_mapa = []
 
-        # print("linhas mapa: ", self.num_linhas, self.num_colunas)
-        # print("matriz mapa: ", self.matriz_mapa)
 
         # linha horizontais
         while linha < self.num_linhas:
@@ -92,6 +91,55 @@ class Mapa:
                             yIni = linha
                             linha += 1
                             while self.matriz_mapa[linha][coluna] == 1:
+                                yFim = linha
+                                linha += 1
+                            linha = yFim
+                            lista_de_linhas_do_mapa.append([xIni, xFim, yIni, yFim])
+                linha += 1
+            coluna += 1
+
+        # print("Linhas do mapa:", lista_de_linhas_do_mapa)
+        return lista_de_linhas_do_mapa
+    
+    def posInvalidas (self):
+        linha = 0
+        coluna = 0
+        lista_de_linhas_do_mapa = []
+
+
+        # linha horizontais
+        while linha < self.num_linhas:
+            coluna = 0
+            while coluna < self.num_colunas:
+                if self.matriz_mapa[linha][coluna] == 7:
+                    if coluna + 1 < self.num_colunas: 
+                        if self.matriz_mapa[linha][coluna + 1] == 7:
+                            xIni = coluna
+                            yIni = linha
+                            yFim = linha
+                            coluna += 1
+                            while self.matriz_mapa[linha][coluna] == 7:
+                                xFim = coluna
+                                coluna += 1
+                            coluna = xFim
+                            lista_de_linhas_do_mapa.append([xIni, xFim, yIni, yFim])
+                coluna += 1
+            linha += 1
+
+        # linha verticais
+        linha = 0
+        coluna = 0
+        while coluna <= self.num_colunas:
+            linha = 0
+            while linha < self.num_linhas:
+                if self.matriz_mapa[linha][coluna] == 7:
+                    if linha + 1 < self.num_linhas: 
+                        if self.matriz_mapa[linha +1][coluna] == 7:
+                            xIni = coluna
+                            xFim = coluna
+                            yIni = linha
+                            linha += 1
+                            while self.matriz_mapa[linha][coluna] == 7:
                                 yFim = linha
                                 linha += 1
                             linha = yFim
@@ -311,10 +359,14 @@ class Pedestres:
             xIni, xFim, yIni, yFim = linha
             posicoes_possiveis = [(x, y) for (x, y) in posicoes_possiveis if not (xIni <= x <= xFim and yIni <= y <= yFim)]
 
-        # print("self.mapa.matriz_mapa: ", self.mapa.linhas_do_mapa)
-        # print("Posições possíveis:", posicoes_possiveis)
+        # Remove as posições que estão dentro de uma linha do mapa
+        for linha in self.mapa.pos_invalidas:
+            xIni, xFim, yIni, yFim = linha
+            posicoes_possiveis = [(x, y) for (x, y) in posicoes_possiveis if not (xIni <= x <= xFim and yIni <= y <= yFim)]
+
+
         random.seed(self.seed)
-        while len(lista_pedestres) <= self.qtd_pedestres:
+        while len(lista_pedestres) < self.qtd_pedestres:
             pos = random.choice(posicoes_possiveis)
             if pos not in lista_pedestres:
                 lista_pedestres.append(pos)

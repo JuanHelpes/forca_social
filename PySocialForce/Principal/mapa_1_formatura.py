@@ -1,18 +1,19 @@
 import numpy as np
 
 # caminho relativo do arquivo do mapa sem alterações
-arquivo_mapa = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1\map_padrao.txt"
+arquivo_mapa = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1_formatura\map_padrao.txt"
 # caminho relativo do arquivo do mapa com alterações
-arquivo_mapa_alterado = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1\map_comodos.txt"
+arquivo_mapa_alterado = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1_formatura\map_comodos.txt"
 # caminho relativo do arquivo do mapa estatico
-arquivo_mapa_static = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1\static_map.txt"
+arquivo_mapa_static = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1_formatura\static_map.txt"
 # caminho relativo do arquivo de passos
-arquivoPassos = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1"
+arquivoPassos = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1_formatura"
+
 # quantidade de pedestres ambiente de culto
-qtd_pedestres = 145
+# qtd_pedestres = 145
 
 # quantidade de pedestres ambiente de formatura
-# qtd_pedestres = 320
+qtd_pedestres = 320
 
 
 # valor para saida do comodo
@@ -30,6 +31,6 @@ xticks = np.arange(0, 90, 5)
 # escala de Y
 yticks = np.arange(0, 80, 5)
 # numero de passos
-n_passos = 220
+n_passos = 700
 # caminho de salvamento do arquivo
-caminho = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1"
+caminho = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_1_formatura"

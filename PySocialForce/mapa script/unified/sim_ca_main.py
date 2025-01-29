@@ -30,17 +30,18 @@ if __name__ == "__main__":
         random.seed(args.scenario_seed)
 
     sep = os.path.sep
-    root_path = "D:\Faculdade\TCC\Codigo\TCC\PySocialForce\examples\mapa script\unified" + sep + args.experiment + sep
+    root_path = r"D:\Faculdade\TCC\Codigo\TCC\PySocialForce\examples\mapa script\unified"
 
-    structure_map = StructureMap(args.experiment, r'D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_5\_nishihari.map')
+    structure_map = StructureMap(args.experiment, r'D:\Faculdade\TCC\Codigo\TCC\PySocialForce\mapa script\unified\igreja_comodos copy.map')
+    # structure_map = StructureMap(args.experiment, r'D:\Faculdade\TCC\Codigo\TCC\PySocialForce\Principal\mapa_6\mapa_exemplo.txt')
     structure_map.load_map()
     structure_map.draw_map(root_path)  
 
 
-    static_map = StaticMap(args.experiment, structure_map)
-    static_map.load_map()
-    with open('static_mapa_nishihari.txt', r'w') as arq:
-            arq.write(str(static_map.map))
+    # static_map = StaticMap(args.experiment, structure_map)
+    # static_map.load_map()
+    # with open('static_mapa_exemplo.txt', r'w') as arq:
+    #         arq.write(str(static_map.map))
     # if (args.draw):
     #     static_map.draw_map(root_path + "output")
   

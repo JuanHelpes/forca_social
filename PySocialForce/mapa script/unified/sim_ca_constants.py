@@ -11,6 +11,7 @@ class Constants(object):
     M_VOID = 4
     M_COMODO = 5
     M_SAIDACOMODO = 9
+    M_AREAINACESSIVEL = 7
     
     # Static Field Constant
     S_WALL = 9999
@@ -31,6 +32,11 @@ class Constants(object):
     C_GRAY = (75, 75, 75)
     C_LIGHT_BLACK = (35, 35, 35)
     C_RED = (255, 0, 0)
+    C_YELLOW = (255,222,89)
+    C_ORANGE = (255,145,77)
+    C_LIGHT_GRAY = (217,217,217)
+    C_LIGHT_YELLOW = (255, 255, 102)
+
 
     # Difusion and Decay Constant
     DIFUSIONDECAY_ALFA = 0.05
